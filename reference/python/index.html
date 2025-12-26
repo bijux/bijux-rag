@@ -1,0 +1,836 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Standalone functional RAG toolkit"><link href="https://bijux.github.io/bijux-rag/reference/python/" rel="canonical"><link href="../http_api/" rel="prev"><link rel="icon" href="../../assets/bijux_icon.png"><meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1"><title>Python API Reference - bijux-rag</title><link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css"><link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><link rel="stylesheet" href="../../assets/_mkdocstrings.css"><link rel="stylesheet" href="../../assets/styles/extra.css"><script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script><link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head> <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" for="__drawer"></label> <div data-md-component="skip"> <a href="#python-api-reference" class="md-skip"> Skip to content </a> </div> <div data-md-component="announce"> </div> <header class="md-header md-header--shadow md-header--lifted" data-md-component="header"> <nav class="md-header__inner md-grid" aria-label="Header"> <a href="../.." title="bijux-rag" class="md-header__button md-logo" aria-label="bijux-rag" data-md-component="logo"> <img src="../../assets/bijux_logo_hq.png" alt="logo"> </a> <label class="md-header__button md-icon" for="__drawer"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg> </label> <div class="md-header__title" data-md-component="header-title"> <div class="md-header__ellipsis"> <div class="md-header__topic"> <span class="md-ellipsis"> bijux-rag </span> </div> <div class="md-header__topic" data-md-component="header-topic"> <span class="md-ellipsis"> Python API Reference </span> </div> </div> </div> <form class="md-header__option" data-md-component="palette"> <input class="md-option" data-md-color-media data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0"> <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg> </label> <input class="md-option" data-md-color-media data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1"> <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg> </label> </form> <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script> <label class="md-header__button md-icon" for="__search"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg> </label> <div class="md-search" data-md-component="search" role="dialog"> <label class="md-search__overlay" for="__search"></label> <div class="md-search__inner" role="search"> <form class="md-search__form" name="search"> <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required> <label class="md-search__icon md-icon" for="__search"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </label> <nav class="md-search__options" aria-label="Search"> <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg> </button> </nav> <div class="md-search__suggest" data-md-component="search-suggest"></div> </form> <div class="md-search__output"> <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix> <div class="md-search-result" data-md-component="search-result"> <div class="md-search-result__meta"> Initializing search </div> <ol class="md-search-result__list" role="presentation"></ol> </div> </div> </div> </div> </div> <div class="md-header__source"> <a href="https://github.com/bijux/bijux-rag" title="Go to repository" class="md-source" data-md-component="source"> <div class="md-source__icon md-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg> </div> <div class="md-source__repository"> bijux/bijux-rag </div> </a> </div> </nav> <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs"> <div class="md-grid"> <ul class="md-tabs__list"> <li class="md-tabs__item"> <a href="../.." class="md-tabs__link"> bijux-rag Documentation </a> </li> <li class="md-tabs__item"> <a href="../../USAGE/" class="md-tabs__link"> Usage </a> </li> <li class="md-tabs__item"> <a href="../../artifacts/" class="md-tabs__link"> Artifacts &amp; Outputs </a> </li> <li class="md-tabs__item"> <a href="../../changelog/" class="md-tabs__link"> Changelog </a> </li> <li class="md-tabs__item"> <a href="../../community/" class="md-tabs__link"> Community &amp; Contributions </a> </li> <li class="md-tabs__item"> <a href="../../project_overview/" class="md-tabs__link"> Project Overview </a> </li> <li class="md-tabs__item"> <a href="../../tests/" class="md-tabs__link"> Tests </a> </li> <li class="md-tabs__item"> <a href="../../tooling/" class="md-tabs__link"> Tooling </a> </li> <li class="md-tabs__item"> <a href="../../ADR/" class="md-tabs__link"> ADR </a> </li> <li class="md-tabs__item"> <a href="../../architecture/" class="md-tabs__link"> Architecture </a> </li> <li class="md-tabs__item md-tabs__item--active"> <a href="../cli/" class="md-tabs__link"> Reference </a> </li> </ul> </div> </nav> </header> <div class="md-container" data-md-component="container"> <main class="md-main" data-md-component="main"> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation"> <div class="md-sidebar__scrollwrap"> <div class="md-sidebar__inner"> <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"> <label class="md-nav__title" for="__drawer"> <a href="../.." title="bijux-rag" class="md-nav__button md-logo" aria-label="bijux-rag" data-md-component="logo"> <img src="../../assets/bijux_logo_hq.png" alt="logo"> </a> bijux-rag </label> <div class="md-nav__source"> <a href="https://github.com/bijux/bijux-rag" title="Go to repository" class="md-source" data-md-component="source"> <div class="md-source__icon md-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg> </div> <div class="md-source__repository"> bijux/bijux-rag </div> </a> </div> <ul class="md-nav__list" data-md-scrollfix> <li class="md-nav__item"> <a href="../.." class="md-nav__link"> <span class="md-ellipsis"> bijux-rag Documentation </span> </a> </li> <li class="md-nav__item"> <a href="../../USAGE/" class="md-nav__link"> <span class="md-ellipsis"> Usage </span> </a> </li> <li class="md-nav__item"> <a href="../../artifacts/" class="md-nav__link"> <span class="md-ellipsis"> Artifacts &amp; Outputs </span> </a> </li> <li class="md-nav__item"> <a href="../../changelog/" class="md-nav__link"> <span class="md-ellipsis"> Changelog </span> </a> </li> <li class="md-nav__item"> <a href="../../community/" class="md-nav__link"> <span class="md-ellipsis"> Community &amp; Contributions </span> </a> </li> <li class="md-nav__item"> <a href="../../project_overview/" class="md-nav__link"> <span class="md-ellipsis"> Project Overview </span> </a> </li> <li class="md-nav__item"> <a href="../../tests/" class="md-nav__link"> <span class="md-ellipsis"> Tests </span> </a> </li> <li class="md-nav__item"> <a href="../../tooling/" class="md-nav__link"> <span class="md-ellipsis"> Tooling </span> </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9"> <div class="md-nav__link md-nav__container"> <a href="../../ADR/" class="md-nav__link "> <span class="md-ellipsis"> ADR </span> </a> <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0"> <span class="md-nav__icon md-icon"></span> </label> </div> <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false"> <label class="md-nav__title" for="__nav_9"> <span class="md-nav__icon md-icon"></span> ADR </label> <ul class="md-nav__list" data-md-scrollfix> <li class="md-nav__item"> <a href="../../ADR/0003-docstring-and-documentation-style/" class="md-nav__link"> <span class="md-ellipsis"> ADR-0003: Docstring and Documentation Style </span> </a> </li> <li class="md-nav__item"> <a href="../../ADR/0004-linting-quality-security/" class="md-nav__link"> <span class="md-ellipsis"> ADR-0004: Linting, Quality, and Security Toolchain </span> </a> </li> <li class="md-nav__item"> <a href="../../ADR/0005-zero-root-pollution-artifacts-only/" class="md-nav__link"> <span class="md-ellipsis"> ADR-0005: Enforcing Zero-Root-Pollution via Makefile-Orchestrated Artifact Containment </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10"> <div class="md-nav__link md-nav__container"> <a href="../../architecture/" class="md-nav__link "> <span class="md-ellipsis"> Architecture </span> </a> <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0"> <span class="md-nav__icon md-icon"></span> </label> </div> <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false"> <label class="md-nav__title" for="__nav_10"> <span class="md-nav__icon md-icon"></span> Architecture </label> <ul class="md-nav__list" data-md-scrollfix> <li class="md-nav__item"> <a href="../../architecture/adr/" class="md-nav__link"> <span class="md-ellipsis"> Adr </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"> <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked> <div class="md-nav__link md-nav__container"> <a href="../cli/" class="md-nav__link "> <span class="md-ellipsis"> Reference </span> </a> <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex> <span class="md-nav__icon md-icon"></span> </label> </div> <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true"> <label class="md-nav__title" for="__nav_11"> <span class="md-nav__icon md-icon"></span> Reference </label> <ul class="md-nav__list" data-md-scrollfix> <li class="md-nav__item"> <a href="../http_api/" class="md-nav__link"> <span class="md-ellipsis"> HTTP API (FastAPI) </span> </a> </li> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc"> <label class="md-nav__link md-nav__link--active" for="__toc"> <span class="md-ellipsis"> Python API Reference </span> <span class="md-nav__icon md-icon"></span> </label> <a href="./" class="md-nav__link md-nav__link--active"> <span class="md-ellipsis"> Python API Reference </span> </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class="md-nav__title" for="__toc"> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix> <li class="md-nav__item"> <a href="#bijux_rag.rag.app" class="md-nav__link"> <span class="md-ellipsis"> app </span> </a> <nav class="md-nav" aria-label="app"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagApp" class="md-nav__link"> <span class="md-ellipsis"> RagApp </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagBuildConfig" class="md-nav__link"> <span class="md-ellipsis"> RagBuildConfig </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagIndex" class="md-nav__link"> <span class="md-ellipsis"> RagIndex </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ask" class="md-nav__link"> <span class="md-ellipsis"> ask </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.build_index_from_csv" class="md-nav__link"> <span class="md-ellipsis"> build_index_from_csv </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ingest_csv_to_chunks" class="md-nav__link"> <span class="md-ellipsis"> ingest_csv_to_chunks </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ingest_docs_to_chunks" class="md-nav__link"> <span class="md-ellipsis"> ingest_docs_to_chunks </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.parse_filters" class="md-nav__link"> <span class="md-ellipsis"> parse_filters </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.retrieve" class="md-nav__link"> <span class="md-ellipsis"> retrieve </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes" class="md-nav__link"> <span class="md-ellipsis"> indexes </span> </a> <nav class="md-nav" aria-label="indexes"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.BM25Index" class="md-nav__link"> <span class="md-ellipsis"> BM25Index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.NumpyCosineIndex" class="md-nav__link"> <span class="md-ellipsis"> NumpyCosineIndex </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.build_bm25_index" class="md-nav__link"> <span class="md-ellipsis"> build_bm25_index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.build_numpy_cosine_index" class="md-nav__link"> <span class="md-ellipsis"> build_numpy_cosine_index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.load_index" class="md-nav__link"> <span class="md-ellipsis"> load_index </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports" class="md-nav__link"> <span class="md-ellipsis"> ports </span> </a> <nav class="md-nav" aria-label="ports"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Answer" class="md-nav__link"> <span class="md-ellipsis"> Answer </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Candidate" class="md-nav__link"> <span class="md-ellipsis"> Candidate </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Citation" class="md-nav__link"> <span class="md-ellipsis"> Citation </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Embedder" class="md-nav__link"> <span class="md-ellipsis"> Embedder </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Generator" class="md-nav__link"> <span class="md-ellipsis"> Generator </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Index" class="md-nav__link"> <span class="md-ellipsis"> Index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Indexer" class="md-nav__link"> <span class="md-ellipsis"> Indexer </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Reranker" class="md-nav__link"> <span class="md-ellipsis"> Reranker </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app" class="md-nav__link"> <span class="md-ellipsis"> fastapi_app </span> </a> <nav class="md-nav" aria-label="fastapi_app"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app--pyright-reportunusedfunctionfalse" class="md-nav__link"> <span class="md-ellipsis"> pyright: reportUnusedFunction=false </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app.create_app" class="md-nav__link"> <span class="md-ellipsis"> create_app </span> </a> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc"> <div class="md-sidebar__scrollwrap"> <div class="md-sidebar__inner"> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class="md-nav__title" for="__toc"> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix> <li class="md-nav__item"> <a href="#bijux_rag.rag.app" class="md-nav__link"> <span class="md-ellipsis"> app </span> </a> <nav class="md-nav" aria-label="app"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagApp" class="md-nav__link"> <span class="md-ellipsis"> RagApp </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagBuildConfig" class="md-nav__link"> <span class="md-ellipsis"> RagBuildConfig </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.RagIndex" class="md-nav__link"> <span class="md-ellipsis"> RagIndex </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ask" class="md-nav__link"> <span class="md-ellipsis"> ask </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.build_index_from_csv" class="md-nav__link"> <span class="md-ellipsis"> build_index_from_csv </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ingest_csv_to_chunks" class="md-nav__link"> <span class="md-ellipsis"> ingest_csv_to_chunks </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.ingest_docs_to_chunks" class="md-nav__link"> <span class="md-ellipsis"> ingest_docs_to_chunks </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.parse_filters" class="md-nav__link"> <span class="md-ellipsis"> parse_filters </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.app.retrieve" class="md-nav__link"> <span class="md-ellipsis"> retrieve </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes" class="md-nav__link"> <span class="md-ellipsis"> indexes </span> </a> <nav class="md-nav" aria-label="indexes"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.BM25Index" class="md-nav__link"> <span class="md-ellipsis"> BM25Index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.NumpyCosineIndex" class="md-nav__link"> <span class="md-ellipsis"> NumpyCosineIndex </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.build_bm25_index" class="md-nav__link"> <span class="md-ellipsis"> build_bm25_index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.build_numpy_cosine_index" class="md-nav__link"> <span class="md-ellipsis"> build_numpy_cosine_index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.indexes.load_index" class="md-nav__link"> <span class="md-ellipsis"> load_index </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports" class="md-nav__link"> <span class="md-ellipsis"> ports </span> </a> <nav class="md-nav" aria-label="ports"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Answer" class="md-nav__link"> <span class="md-ellipsis"> Answer </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Candidate" class="md-nav__link"> <span class="md-ellipsis"> Candidate </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Citation" class="md-nav__link"> <span class="md-ellipsis"> Citation </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Embedder" class="md-nav__link"> <span class="md-ellipsis"> Embedder </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Generator" class="md-nav__link"> <span class="md-ellipsis"> Generator </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Index" class="md-nav__link"> <span class="md-ellipsis"> Index </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Indexer" class="md-nav__link"> <span class="md-ellipsis"> Indexer </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.rag.ports.Reranker" class="md-nav__link"> <span class="md-ellipsis"> Reranker </span> </a> </li> </ul> </nav> </li> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app" class="md-nav__link"> <span class="md-ellipsis"> fastapi_app </span> </a> <nav class="md-nav" aria-label="fastapi_app"> <ul class="md-nav__list"> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app--pyright-reportunusedfunctionfalse" class="md-nav__link"> <span class="md-ellipsis"> pyright: reportUnusedFunction=false </span> </a> </li> <li class="md-nav__item"> <a href="#bijux_rag.boundaries.web.fastapi_app.create_app" class="md-nav__link"> <span class="md-ellipsis"> create_app </span> </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-content" data-md-component="content"> <nav class="md-path" aria-label="Navigation"> <ol class="md-path__list"> <li class="md-path__item"> <a href="../.." class="md-path__link"> <span class="md-ellipsis"> bijux-rag Documentation </span> </a> </li> <li class="md-path__item"> <a href="../http_api/" class="md-path__link"> <span class="md-ellipsis"> Reference </span> </a> </li> </ol> </nav> <article class="md-content__inner md-typeset"> <h1 id="python-api-reference">Python API Reference<a class="headerlink" href="#python-api-reference" title="Permanent link">¶</a></h1> <p>The core entry points are documented via <code>mkdocstrings</code>. Key modules:</p> <div class="doc doc-object doc-module"> <h2 id="bijux_rag.rag.app" class="doc doc-heading"> <span class="doc doc-object-name doc-module-name">bijux_rag.rag.app</span> <a href="#bijux_rag.rag.app" class="headerlink" title="Permanent link">¶</a></h2> <div class="doc doc-contents first"> <p>Application services for the 'real RAG' path.</p> <details class="this-module-wires" open> <summary>This module wires</summary> <p>clean -&gt; chunk -&gt; index -&gt; retrieve -&gt; (optional rerank) -&gt; generate.</p> </details> <p>Both CLI and FastAPI boundary call into this layer to avoid drift.</p> <div class="doc doc-children"> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.app.RagApp" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">RagApp</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.app.RagApp" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">RagApp</span><span class="p">(</span>
+    <span class="n">generator</span><span class="o">=</span><span class="n"><span title="bijux_rag.rag.generators.ExtractiveGenerator">ExtractiveGenerator</span></span><span class="p">(),</span>
+    <span class="n">reranker</span><span class="o">=</span><span class="n"><span title="bijux_rag.rag.rerankers.LexicalOverlapReranker">LexicalOverlapReranker</span></span><span class="p">(),</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"default"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.app.RagBuildConfig" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">RagBuildConfig</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.app.RagBuildConfig" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">RagBuildConfig</span><span class="p">(</span>
+    <span class="n">chunk_env</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"bm25"</span><span class="p">,</span>
+    <span class="n">embedder</span><span class="o">=</span><span class="s2">"hash16"</span><span class="p">,</span>
+    <span class="n">sbert_model</span><span class="o">=</span><span class="s2">"all-MiniLM-L6-v2"</span><span class="p">,</span>
+    <span class="n">bm25_buckets</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>RAG build configuration.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.app.RagIndex" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">RagIndex</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.app.RagIndex" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">RagIndex</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">fingerprint</span><span class="p">,</span> <span class="n">schema_version</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>In-memory index wrapper for deterministic CI profile.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.ask" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">ask</span> <a href="#bijux_rag.rag.app.ask" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">ask</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">index_path</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">filters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">embedder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">rerank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Retrieve and answer with citations.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">index_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">filters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">embedder</span><span class="p">:</span> <span class="n">Embedder</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">rerank</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Answer</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Retrieve and answer with citations."""</span>
+
+    <span class="n">cands</span> <span class="o">=</span> <span class="n">retrieve</span><span class="p">(</span>
+        <span class="n">index_path</span><span class="o">=</span><span class="n">index_path</span><span class="p">,</span>
+        <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">top_k</span><span class="p">)),</span>
+        <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span>
+        <span class="n">embedder</span><span class="o">=</span><span class="n">embedder</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">rerank</span><span class="p">:</span>
+        <span class="n">cands</span> <span class="o">=</span> <span class="n">LexicalOverlapReranker</span><span class="p">()</span><span class="o">.</span><span class="n">rerank</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">candidates</span><span class="o">=</span><span class="n">cands</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">top_k</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cands</span> <span class="o">=</span> <span class="n">cands</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">top_k</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">ExtractiveGenerator</span><span class="p">()</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">candidates</span><span class="o">=</span><span class="n">cands</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.build_index_from_csv" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">build_index_from_csv</span> <a href="#bijux_rag.rag.app.build_index_from_csv" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_index_from_csv</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">,</span> <span class="n">out_path</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Build and persist an index.</p> <p><span class="doc-section-title">Returns:</span></p> <table> <thead> <tr> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr class="doc-section-item"> <td> <code><span title="str">str</span></code> </td> <td> <div class="doc-md-description"> <p>The index fingerprint.</p> </div> </td> </tr> </tbody> </table> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_index_from_csv</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">RagBuildConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build and persist an index.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The index fingerprint.</span>
+<span class="sd">    """</span>
+
+    <span class="n">chunks</span> <span class="o">=</span> <span class="n">ingest_csv_to_chunks</span><span class="p">(</span><span class="n">csv_path</span><span class="o">=</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">chunk_env</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">"bm25"</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">build_bm25_index</span><span class="p">(</span><span class="n">chunks</span><span class="o">=</span><span class="n">chunks</span><span class="p">,</span> <span class="n">buckets</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">bm25_buckets</span><span class="p">)</span>
+        <span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">out_path</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">fingerprint</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">"numpy-cosine"</span><span class="p">:</span>
+        <span class="n">emb</span> <span class="o">=</span> <span class="n">_make_embedder</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">build_numpy_cosine_index</span><span class="p">(</span><span class="n">chunks</span><span class="o">=</span><span class="n">chunks</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="n">emb</span><span class="p">)</span>
+        <span class="n">idx</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">out_path</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">fingerprint</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"unknown index backend: </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">backend</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.ingest_csv_to_chunks" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">ingest_csv_to_chunks</span> <a href="#bijux_rag.rag.app.ingest_csv_to_chunks" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">ingest_csv_to_chunks</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Ingest a CSV and return chunks.</p> <p><span class="doc-section-title">Parameters:</span></p> <table> <thead> <tr> <th>Name</th> <th>Type</th> <th>Description</th> <th>Default</th> </tr> </thead> <tbody> <tr class="doc-section-item"> <td> <code>csv_path</code> </td> <td> <code><span title="pathlib.Path">Path</span></code> </td> <td> <div class="doc-md-description"> <p>CSV path with columns: doc_id,title,abstract,categories.</p> </div> </td> <td> <em>required</em> </td> </tr> <tr class="doc-section-item"> <td> <code>env</code> </td> <td> <code><span title="bijux_rag.core.rag_types.RagEnv">RagEnv</span></code> </td> <td> <div class="doc-md-description"> <p>Chunking configuration.</p> </div> </td> <td> <em>required</em> </td> </tr> </tbody> </table> <p><span class="doc-section-title">Returns:</span></p> <table> <thead> <tr> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr class="doc-section-item"> <td> <code><span title="list">list</span>[<span title="bijux_rag.core.rag_types.Chunk">Chunk</span>]</code> </td> <td> <div class="doc-md-description"> <p>A list of chunks (without embeddings for lexical backends).</p> </div> </td> </tr> </tbody> </table> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ingest_csv_to_chunks</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">csv_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">RagEnv</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Chunk</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Ingest a CSV and return chunks.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        csv_path: CSV path with columns: doc_id,title,abstract,categories.</span>
+<span class="sd">        env: Chunking configuration.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A list of chunks (without embeddings for lexical backends).</span>
+<span class="sd">    """</span>
+
+    <span class="n">storage</span> <span class="o">=</span> <span class="n">FileStorage</span><span class="p">()</span>
+    <span class="n">docs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">RawDoc</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">storage</span><span class="o">.</span><span class="n">read_docs</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">is_ok</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
+            <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">is_err</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"unknown error"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="c1"># Fail fast: ingestion is a boundary operation.</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"CSV parse failures: "</span> <span class="o">+</span> <span class="s2">"; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
+
+    <span class="n">cleaned</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_iter_clean_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
+    <span class="n">raw_chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_iter_chunks</span><span class="p">(</span><span class="n">cleaned</span><span class="p">,</span> <span class="n">env</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Chunk</span><span class="p">(</span>
+            <span class="n">doc_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+            <span class="n">end</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">embedding</span><span class="o">=</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">raw_chunks</span>
+    <span class="p">]</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.ingest_docs_to_chunks" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">ingest_docs_to_chunks</span> <a href="#bijux_rag.rag.app.ingest_docs_to_chunks" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">ingest_docs_to_chunks</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Ingest in-memory docs and return chunks.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ingest_docs_to_chunks</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">docs</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">RawDoc</span><span class="p">],</span> <span class="n">env</span><span class="p">:</span> <span class="n">RagEnv</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Chunk</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Ingest in-memory docs and return chunks."""</span>
+
+    <span class="n">cleaned</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_iter_clean_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
+    <span class="n">raw_chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_iter_chunks</span><span class="p">(</span><span class="n">cleaned</span><span class="p">,</span> <span class="n">env</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Chunk</span><span class="p">(</span>
+            <span class="n">doc_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+            <span class="n">end</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">embedding</span><span class="o">=</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">raw_chunks</span>
+    <span class="p">]</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.parse_filters" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">parse_filters</span> <a href="#bijux_rag.rag.app.parse_filters" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse_filters</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Parse CLI/API filters.</p> <p><span class="doc-section-title">Parameters:</span></p> <table> <thead> <tr> <th>Name</th> <th>Type</th> <th>Description</th> <th>Default</th> </tr> </thead> <tbody> <tr class="doc-section-item"> <td> <code>filters</code> </td> <td> <code><span title="list">list</span>[<span title="str">str</span>] | None</code> </td> <td> <div class="doc-md-description"> <p>list like ["category=cs.AI", "doc_id=foo"].</p> </div> </td> <td> <em>required</em> </td> </tr> </tbody> </table> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">parse_filters</span><span class="p">(</span><span class="n">filters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Parse CLI/API filters.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        filters: list like ["category=cs.AI", "doc_id=foo"].</span>
+<span class="sd">    """</span>
+
+    <span class="n">out</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filters</span> <span class="ow">or</span> <span class="p">[]:</span>
+        <span class="k">if</span> <span class="s2">"="</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"invalid filter: </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"invalid filter: </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.app.retrieve" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">retrieve</span> <a href="#bijux_rag.rag.app.retrieve" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">retrieve</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">index_path</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">filters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">embedder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Retrieve candidates from a persisted index.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">index_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">filters</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">embedder</span><span class="p">:</span> <span class="n">Embedder</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Candidate</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Retrieve candidates from a persisted index."""</span>
+
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">load_index</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">index_path</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">NumpyCosineIndex</span><span class="p">)</span> <span class="ow">and</span> <span class="n">embedder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Default embedder based on index spec.</span>
+        <span class="k">if</span> <span class="n">idx</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"sbert:"</span><span class="p">):</span>
+            <span class="n">embedder</span> <span class="o">=</span> <span class="n">SentenceTransformersEmbedder</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">idx</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">":"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">embedder</span> <span class="o">=</span> <span class="n">HashEmbedder</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">idx</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">top_k</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span> <span class="n">embedder</span><span class="o">=</span><span class="n">embedder</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> </div> </div> </div> <div class="doc doc-object doc-module"> <h2 id="bijux_rag.rag.indexes" class="doc doc-heading"> <span class="doc doc-object-name doc-module-name">bijux_rag.rag.indexes</span> <a href="#bijux_rag.rag.indexes" class="headerlink" title="Permanent link">¶</a></h2> <div class="doc doc-contents first"> <p>Reference indexes.</p> <p>Two backends are provided out of the box: * NumpyCosineIndex: small/medium corpora, deterministic, dependency-free. * BM25Index: CI-friendly lexical retrieval without model downloads.</p> <p>Persistence format: msgpack (schema_versioned).</p> <div class="doc doc-children"> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.indexes.BM25Index" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">BM25Index</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.indexes.BM25Index" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">BM25Index</span><span class="p">(</span>
+    <span class="n">chunks</span><span class="p">,</span>
+    <span class="n">buckets</span><span class="p">,</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">tfs</span><span class="p">,</span>
+    <span class="n">doc_len</span><span class="p">,</span>
+    <span class="n">avg_dl</span><span class="p">,</span>
+    <span class="n">k1</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+    <span class="n">b</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Hashed-token BM25 index.</p> <p>This is a practical, CI-friendly retrieval baseline: - deterministic - no large model downloads - supports metadata filters</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.indexes.NumpyCosineIndex" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">NumpyCosineIndex</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.indexes.NumpyCosineIndex" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">NumpyCosineIndex</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">spec</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Dense vector index using cosine similarity.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.indexes.build_bm25_index" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">build_bm25_index</span> <a href="#bijux_rag.rag.indexes.build_bm25_index" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_bm25_index</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">buckets</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Build a hashed-token BM25 index.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/indexes.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_bm25_index</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span> <span class="n">chunks</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Chunk</span><span class="p">],</span> <span class="n">buckets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span><span class="p">,</span> <span class="n">k1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.75</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BM25Index</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a hashed-token BM25 index."""</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"cannot build index from empty chunk list"</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">buckets</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">tfs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="o">...</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">doc_len</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="n">ordered_chunks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">)</span>
+
+    <span class="c1"># Compute per-chunk term counts and bucket doc-frequencies.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ordered_chunks</span><span class="p">):</span>
+        <span class="n">toks</span> <span class="o">=</span> <span class="n">_tokenize</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">doc_len</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">toks</span><span class="p">))</span>
+        <span class="n">counts</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">seen</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">toks</span><span class="p">:</span>
+            <span class="n">bucket</span> <span class="o">=</span> <span class="n">_stable_token_bucket</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">buckets</span><span class="o">=</span><span class="n">buckets</span><span class="p">)</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">bucket</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">bucket</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">bkt</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">bkt</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">tfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">())))</span>
+
+    <span class="n">avg_dl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">doc_len</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="k">if</span> <span class="n">n</span> <span class="k">else</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">BM25Index</span><span class="p">(</span>
+        <span class="n">chunks</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ordered_chunks</span><span class="p">),</span>
+        <span class="n">buckets</span><span class="o">=</span><span class="n">buckets</span><span class="p">,</span>
+        <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+        <span class="n">tfs</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tfs</span><span class="p">),</span>
+        <span class="n">doc_len</span><span class="o">=</span><span class="n">doc_len</span><span class="p">,</span>
+        <span class="n">avg_dl</span><span class="o">=</span><span class="n">avg_dl</span><span class="p">,</span>
+        <span class="n">k1</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">k1</span><span class="p">),</span>
+        <span class="n">b</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.indexes.build_numpy_cosine_index" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">build_numpy_cosine_index</span> <a href="#bijux_rag.rag.indexes.build_numpy_cosine_index" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_numpy_cosine_index</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chunks</span><span class="p">,</span> <span class="n">embedder</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Build a dense index from chunk texts.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/indexes.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_numpy_cosine_index</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">chunks</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Chunk</span><span class="p">],</span> <span class="n">embedder</span><span class="p">:</span> <span class="n">Embedder</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumpyCosineIndex</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a dense index from chunk texts."""</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"cannot build index from empty chunk list"</span><span class="p">)</span>
+    <span class="n">ordered_chunks</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">spec</span>
+    <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ordered_chunks</span><span class="p">]</span>
+    <span class="n">vecs</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">embed_texts</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vecs</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"embedder must return a 2D array"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ordered_chunks</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"embedder output size mismatch"</span><span class="p">)</span>
+    <span class="c1"># Spec dim is enforced at the boundary (this is the point of EmbeddingSpec).</span>
+    <span class="k">if</span> <span class="n">vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">spec</span><span class="o">.</span><span class="n">dim</span><span class="p">:</span>
+        <span class="c1"># Allow embedders to report placeholder dims; in that case, take the real dim.</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">EmbeddingSpec</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">vecs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">metric</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="n">spec</span><span class="o">.</span><span class="n">normalized</span>
+        <span class="p">)</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vecs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">normalized</span><span class="p">:</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">_l2_normalize</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">out_chunks</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+        <span class="n">Chunk</span><span class="p">(</span>
+            <span class="n">doc_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+            <span class="n">end</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">embedding</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span>
+            <span class="n">embedding_spec</span><span class="o">=</span><span class="n">spec</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ordered_chunks</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">NumpyCosineIndex</span><span class="p">(</span><span class="n">chunks</span><span class="o">=</span><span class="n">out_chunks</span><span class="p">,</span> <span class="n">vectors</span><span class="o">=</span><span class="n">arr</span><span class="p">,</span> <span class="n">spec</span><span class="o">=</span><span class="n">spec</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.rag.indexes.load_index" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">load_index</span> <a href="#bijux_rag.rag.indexes.load_index" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">load_index</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Load an index from disk.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/rag/indexes.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_index</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NumpyCosineIndex</span> <span class="o">|</span> <span class="n">BM25Index</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Load an index from disk."""</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">msgpack</span><span class="o">.</span><span class="n">unpackb</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">backend</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"backend"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">"bm25"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">BM25Index</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">backend</span> <span class="o">==</span> <span class="s2">"numpy-cosine"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">NumpyCosineIndex</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"unknown index backend: </span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> </div> </div> </div> <div class="doc doc-object doc-module"> <h2 id="bijux_rag.rag.ports" class="doc doc-heading"> <span class="doc doc-object-name doc-module-name">bijux_rag.rag.ports</span> <a href="#bijux_rag.rag.ports" class="headerlink" title="Permanent link">¶</a></h2> <div class="doc doc-contents first"> <p>RAG primitives: ports for embedders, indexes, retrieval, and generation.</p> <p>This module is deliberately dependency-light. Concrete backends live in sibling modules.</p> <p>The goal is to make bijux-rag <em>actually</em> RAG: ingest -&gt; index -&gt; retrieve (+ optional rerank) -&gt; answer with citations.</p> <div class="doc doc-children"> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Answer" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Answer</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.ports.Answer" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">Answer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">citations</span><span class="o">=</span><span class="p">(),</span> <span class="n">candidates</span><span class="o">=</span><span class="p">())</span>
+</code></pre></div> <div class="doc doc-contents "> <p>A grounded answer.</p> <p><span class="doc-section-title">Parameters:</span></p> <table> <thead> <tr> <th>Name</th> <th>Type</th> <th>Description</th> <th>Default</th> </tr> </thead> <tbody> <tr class="doc-section-item"> <td> <code>text</code> </td> <td> <code><span title="str">str</span></code> </td> <td> <div class="doc-md-description"> <p>Answer text.</p> </div> </td> <td> <em>required</em> </td> </tr> <tr class="doc-section-item"> <td> <code>citations</code> </td> <td> <code><span title="tuple">tuple</span>[<a class="autorefs autorefs-internal" title="Citation
+
+
+  
+      dataclass
+   (bijux_rag.rag.ports.Citation)" href="#bijux_rag.rag.ports.Citation">Citation</a>, ...]</code> </td> <td> <div class="doc-md-description"> <p>Evidence citations.</p> </div> </td> <td> <code>()</code> </td> </tr> </tbody> </table> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Candidate" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Candidate</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.ports.Candidate" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">Candidate</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n"><span title="dict">dict</span></span><span class="p">())</span>
+</code></pre></div> <div class="doc doc-contents "> <p>A retrieved chunk plus score and non-sensitive metadata.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Citation" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Citation</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a href="#bijux_rag.rag.ports.Citation" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">Citation</span><span class="p">(</span><span class="n">doc_id</span><span class="p">,</span> <span class="n">chunk_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div> <div class="doc doc-contents "> <p>A citation referencing an evidence chunk.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Embedder" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Embedder</span> <a href="#bijux_rag.rag.ports.Embedder" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc doc-contents "> <p class="doc doc-class-bases"> Bases: <code><span title="typing.Protocol">Protocol</span></code></p> <p>Embedder port.</p> <p>Implementations must be deterministic given the same inputs and configuration.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Generator" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Generator</span> <a href="#bijux_rag.rag.ports.Generator" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc doc-contents "> <p class="doc doc-class-bases"> Bases: <code><span title="typing.Protocol">Protocol</span></code></p> <p>Generator port.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Index" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Index</span> <a href="#bijux_rag.rag.ports.Index" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc doc-contents "> <p class="doc doc-class-bases"> Bases: <code><span title="typing.Protocol">Protocol</span></code></p> <p>Index port.</p> <p>Indexes are responsible for persistence (save/load) and schema versioning.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Indexer" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Indexer</span> <a href="#bijux_rag.rag.ports.Indexer" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc doc-contents "> <p class="doc doc-class-bases"> Bases: <code><span title="typing.Protocol">Protocol</span></code></p> <p>Indexer port.</p> <div class="doc doc-children"> </div> </div> </div> <div class="doc doc-object doc-class"> <h3 id="bijux_rag.rag.ports.Reranker" class="doc doc-heading"> <span class="doc doc-object-name doc-class-name">Reranker</span> <a href="#bijux_rag.rag.ports.Reranker" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc doc-contents "> <p class="doc doc-class-bases"> Bases: <code><span title="typing.Protocol">Protocol</span></code></p> <p>Reranker port.</p> <div class="doc doc-children"> </div> </div> </div> </div> </div> </div> <div class="doc doc-object doc-module"> <h2 id="bijux_rag.boundaries.web.fastapi_app" class="doc doc-heading"> <span class="doc doc-object-name doc-module-name">bijux_rag.boundaries.web.fastapi_app</span> <a href="#bijux_rag.boundaries.web.fastapi_app" class="headerlink" title="Permanent link">¶</a></h2> <div class="doc doc-contents first"> <p>FastAPI adapter exposing chunking and RAG endpoints.</p> <h3 id="bijux_rag.boundaries.web.fastapi_app--pyright-reportunusedfunctionfalse">pyright: reportUnusedFunction=false<a class="headerlink" href="#bijux_rag.boundaries.web.fastapi_app--pyright-reportunusedfunctionfalse" title="Permanent link">¶</a></h3> <div class="doc doc-children"> <div class="doc doc-object doc-function"> <h3 id="bijux_rag.boundaries.web.fastapi_app.create_app" class="doc doc-heading"> <span class="doc doc-object-name doc-function-name">create_app</span> <a href="#bijux_rag.boundaries.web.fastapi_app.create_app" class="headerlink" title="Permanent link">¶</a></h3> <div class="doc-signature highlight"><pre><span></span><code><span class="nf">create_app</span><span class="p">()</span>
+</code></pre></div> <div class="doc doc-contents "> <p>Construct a FastAPI app with chunking and RAG endpoints.</p> <details class="mkdocstrings-source"> <summary>Source code in <code>src/bijux_rag/boundaries/web/fastapi_app.py</code></summary> <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_app</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">FastAPI</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Construct a FastAPI app with chunking and RAG endpoints."""</span>
+
+    <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"bijux-rag"</span><span class="p">,</span> <span class="n">openapi_version</span><span class="o">=</span><span class="s2">"3.1.0"</span><span class="p">)</span>
+    <span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">"/v1"</span><span class="p">)</span>
+
+    <span class="n">_APP</span> <span class="o">=</span> <span class="n">RagApp</span><span class="p">()</span>
+    <span class="n">_INDEX_STORE</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RagIndex</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/healthz"</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">healthz</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"ok"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+
+    <span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/chunks"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">PChunkResponse</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">chunks</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">PChunkRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PChunkResponse</span><span class="p">:</span>
+        <span class="c1"># Boundary validation ensures we do not 500 on invalid inputs.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">docs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">d</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">category</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">req</span><span class="o">.</span><span class="n">docs</span><span class="p">]</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="n">ChunkAndEmbedConfig</span><span class="p">(</span>
+                <span class="n">chunk_size</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">,</span>
+                <span class="n">overlap</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">overlap</span><span class="p">,</span>
+                <span class="n">include_embeddings</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">include_embeddings</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">chunk_and_embed_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Defensive: should be unreachable if request validation is correct.</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">422</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Err</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">PChunkResponse</span><span class="p">(</span>
+            <span class="n">chunks</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">ChunkOut</span><span class="p">(</span>
+                    <span class="n">doc_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+                    <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                    <span class="n">start</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                    <span class="n">end</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                    <span class="n">embedding</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">embedding</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">embedding</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">chunk_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/index/build"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">IndexBuildResponse</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">index_build</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">IndexBuildRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IndexBuildResponse</span><span class="p">:</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">RawDoc</span><span class="p">(</span>
+                <span class="n">doc_id</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">title</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span>
+                <span class="n">abstract</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                <span class="n">categories</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">category</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">req</span><span class="o">.</span><span class="n">docs</span>
+        <span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">_APP</span><span class="o">.</span><span class="n">build_index</span><span class="p">(</span>
+            <span class="n">docs</span><span class="o">=</span><span class="n">docs</span><span class="p">,</span>
+            <span class="n">backend</span><span class="o">=</span><span class="n">_backend_from_str</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">backend</span><span class="p">),</span>
+            <span class="n">chunk_size</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">chunk_size</span><span class="p">,</span>
+            <span class="n">overlap</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">overlap</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Err</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">index_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"idx_</span><span class="si">{</span><span class="n">idx</span><span class="o">.</span><span class="n">fingerprint</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">_INDEX_STORE</span><span class="p">[</span><span class="n">index_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
+
+        <span class="k">return</span> <span class="n">IndexBuildResponse</span><span class="p">(</span>
+            <span class="n">index_id</span><span class="o">=</span><span class="n">index_id</span><span class="p">,</span>
+            <span class="n">fingerprint</span><span class="o">=</span><span class="n">idx</span><span class="o">.</span><span class="n">fingerprint</span><span class="p">,</span>
+            <span class="n">schema_version</span><span class="o">=</span><span class="n">idx</span><span class="o">.</span><span class="n">schema_version</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/retrieve"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">RetrieveResponse</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">RetrieveRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RetrieveResponse</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">_INDEX_STORE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">index_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"Unknown index_id"</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">_APP</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">top_k</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">filters</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Err</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="n">candidates</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Candidate</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="n">RetrieveResponse</span><span class="p">(</span>
+            <span class="n">candidates</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">PCandidate</span><span class="p">(</span>
+                    <span class="n">score</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+                    <span class="n">chunk</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">"doc_id"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+                        <span class="s2">"chunk_id"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">,</span>
+                        <span class="s2">"text"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                        <span class="s2">"start"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                        <span class="s2">"end"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                        <span class="s2">"metadata"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                    <span class="p">},</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidates</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/ask"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">AskResponse</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">ask</span><span class="p">(</span><span class="n">req</span><span class="p">:</span> <span class="n">AskRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AskResponse</span><span class="p">:</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">_INDEX_STORE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">index_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">"Unknown index_id"</span><span class="p">)</span>
+
+        <span class="n">res</span> <span class="o">=</span> <span class="n">_APP</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
+            <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+            <span class="n">top_k</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">top_k</span><span class="p">,</span>
+            <span class="n">filters</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span>
+            <span class="n">rerank</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">rerank</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Err</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Answer</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">AskResponse</span><span class="p">(</span>
+            <span class="n">answer</span><span class="o">=</span><span class="n">ans</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+            <span class="n">citations</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">PCitation</span><span class="p">(</span>
+                    <span class="n">doc_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+                    <span class="n">chunk_id</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">,</span>
+                    <span class="n">start</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                    <span class="n">end</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                    <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ans</span><span class="o">.</span><span class="n">citations</span>
+            <span class="p">],</span>
+            <span class="n">candidates</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">PCandidate</span><span class="p">(</span>
+                    <span class="n">score</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">score</span><span class="p">,</span>
+                    <span class="n">chunk</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">"doc_id"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">doc_id</span><span class="p">,</span>
+                        <span class="s2">"chunk_id"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">chunk_id</span><span class="p">,</span>
+                        <span class="s2">"text"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                        <span class="s2">"start"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                        <span class="s2">"end"</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                        <span class="s2">"metadata"</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">chunk</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                    <span class="p">},</span>
+                    <span class="n">metadata</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">metadata</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ans</span><span class="o">.</span><span class="n">candidates</span>
+            <span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_custom_openapi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span> <span class="o">=</span> <span class="n">get_openapi</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="s2">"0.1.0"</span><span class="p">,</span>
+            <span class="n">routes</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">routes</span><span class="p">,</span>
+            <span class="n">openapi_version</span><span class="o">=</span><span class="s2">"3.1.0"</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="n">app</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">openapi_schema</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">openapi</span> <span class="o">=</span> <span class="n">_custom_openapi</span>  <span class="c1"># type: ignore[method-assign]</span>
+    <span class="k">return</span> <span class="n">app</span>
+</code></pre></div></td></tr></tbody></table></div> </details> </div> </div> </div> </div> </div> <aside class="md-source-file"> <span class="md-source-file__fact"> <span class="md-icon" title="Last update"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg> </span> <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 01:57:01 UTC">December 26, 2025</span> </span> <span class="md-source-file__fact"> <span class="md-icon" title="Created"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg> </span> <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 26, 2025 01:57:01 UTC">December 26, 2025</span> </span> </aside> </article> </div> <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script> <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script> </div> <button type="button" class="md-top md-icon" data-md-component="top" hidden> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg> Back to top </button> </main> <footer class="md-footer"> <nav class="md-footer__inner md-grid" aria-label="Footer"> <a href="../http_api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: HTTP API (FastAPI)"> <div class="md-footer__button md-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> Previous </span> <div class="md-ellipsis"> HTTP API (FastAPI) </div> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class="md-copyright"> Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener"> Material for MkDocs </a> </div> <div class="md-social"> <a href="https://github.com/bijux/bijux-rag" target="_blank" rel="noopener" title="github.com" class="md-social__link"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg> </a> <a href="https://pypi.org/project/bijux-rag/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!-- Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"></path></svg> </a> </div> </div> </div> </footer> </div> <div class="md-dialog" data-md-component="dialog"> <div class="md-dialog__inner md-typeset"></div> </div> <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "navigation.instant", "content.code.copy", "content.code.annotate", "search.highlight", "search.suggest", "toc.follow", "content.tabs.link", "content.action.edit", "content.action.view", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script> <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
